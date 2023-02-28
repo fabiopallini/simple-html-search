@@ -42,10 +42,10 @@ class QuetzalShsAdmin {
 
     public function load_scripts() {
         // JS bootstrap
-        wp_register_script('Quetzal_shs_bootstrap', '//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js');
+        wp_register_script('Quetzal_shs_bootstrap', plugin_dir_url($this->file) . 'bootstrap.bundle.min.js');
         wp_enqueue_script('Quetzal_shs_bootstrap');
         // CSS bootstrap
-        wp_register_style('Quetzal_shs_bootstrap', '//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css');
+        wp_register_style('Quetzal_shs_bootstrap', plugin_dir_url($this->file) . 'bootstrap.min.css');
         wp_enqueue_style('Quetzal_shs_bootstrap');
 
         //css style.css
@@ -53,9 +53,9 @@ class QuetzalShsAdmin {
         wp_enqueue_style("Quetzal_shs_style");
 
         // highlight.js
-        wp_register_style('Quetzal_shs_highlightjs_css', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css');
+        wp_register_style('Quetzal_shs_highlightjs_css', plugin_dir_url($this->file) . 'highlight-dark.min.css');
         wp_enqueue_style('Quetzal_shs_highlightjs_css');
-        wp_register_script('Quetzal_shs_hightlight_js', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js');
+        wp_register_script('Quetzal_shs_hightlight_js', plugin_dir_url($this->file) . 'highlight.min.js');
         wp_enqueue_script('Quetzal_shs_hightlight_js');
 
         wp_register_script( 'Quetzal_shs_main_js' , plugin_dir_url($this->file) . 'main.js' );
