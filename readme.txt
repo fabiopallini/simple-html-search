@@ -2,12 +2,12 @@
 Tags: search, custom layout, search bar, ajax search, search filter, custom fields search, shortcode
 Requires at least: 4.7
 Tested up to: 6.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A search plugin that can be changed graphically writing HTML, both for the search bar and for the results
+A search bar plugin that can be changed graphically writing HTML, both for search bar and for results
 
 == Description ==
 

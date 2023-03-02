@@ -37,15 +37,14 @@ class QuetzalShsAdmin {
 
         register_activation_hook($this->file, [$this, 'activation']);
         //register_deactivation_hook($this->file, [$this, 'uninstall']);
-        register_uninstall_hook($this->file, [$this, 'uninstall']);
     }
 
     public function load_scripts() {
         // JS bootstrap
-        wp_register_script('Quetzal_shs_bootstrap', plugin_dir_url($this->file) . 'bootstrap.bundle.min.js');
+        wp_register_script('Quetzal_shs_bootstrap', plugin_dir_url($this->file) . 'lib/bootstrap.bundle.min.js');
         wp_enqueue_script('Quetzal_shs_bootstrap');
         // CSS bootstrap
-        wp_register_style('Quetzal_shs_bootstrap', plugin_dir_url($this->file) . 'bootstrap.min.css');
+        wp_register_style('Quetzal_shs_bootstrap', plugin_dir_url($this->file) . 'lib/bootstrap.min.css');
         wp_enqueue_style('Quetzal_shs_bootstrap');
 
         //css style.css
@@ -53,9 +52,9 @@ class QuetzalShsAdmin {
         wp_enqueue_style("Quetzal_shs_style");
 
         // highlight.js
-        wp_register_style('Quetzal_shs_highlightjs_css', plugin_dir_url($this->file) . 'highlight-dark.min.css');
+        wp_register_style('Quetzal_shs_highlightjs_css', plugin_dir_url($this->file) . 'lib/highlight-dark.min.css');
         wp_enqueue_style('Quetzal_shs_highlightjs_css');
-        wp_register_script('Quetzal_shs_hightlight_js', plugin_dir_url($this->file) . 'highlight.min.js');
+        wp_register_script('Quetzal_shs_hightlight_js', plugin_dir_url($this->file) . 'lib/highlight.min.js');
         wp_enqueue_script('Quetzal_shs_hightlight_js');
 
         wp_register_script( 'Quetzal_shs_main_js' , plugin_dir_url($this->file) . 'main.js' );
