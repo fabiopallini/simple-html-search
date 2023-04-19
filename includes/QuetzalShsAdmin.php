@@ -97,7 +97,7 @@ class QuetzalShsAdmin {
                         <button class="btn btn-success" onclick="quetzal_shs_save_html('quetzal_shs_result_1')">Save</button>
                         <span class="quetzal-shs-label-shortcode">shortcode [simple_html_search_results]</span>
                     </div>
-                    <textarea placeholder="result code..." class="quetzal_shs_textarea" id="quetzal_shs_result_1"><?php $this->read_html("quetzal_shs_result_1") ?></textarea>    
+                    <textarea placeholder="result code..." class="quetzal_shs_textarea" id="quetzal_shs_result_1"><?php $this->read_html("quetzal_shs_result_1") ?></textarea> 
                 </div>
 
                 <div class="col-md-5">
@@ -134,10 +134,22 @@ class QuetzalShsAdmin {
                         name="limit" with value="5" sets the results to the first 5, any &lt;input&gt; may be hidden also.
                     </p>
 
-                    <pre class="quetzal_shs_pre"><code class="language-html" id="quetzal_shs_codesample1"><div style="border: 1px solid lightgray; 
-border-radius: 5px; padding: 15px; 
--webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5); 
-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);">
+                    <pre class="quetzal_shs_pre"><code class="language-html" id="quetzal_shs_codesample1"><style>
+    .shs_search {
+        border: 1px solid lightgray; 
+        border-radius: 5px; padding: 15px; 
+        -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5); 
+        box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
+    }
+    
+    .shs_button {
+        display: block;
+        margin: 20px auto 10px auto;
+        background-color: steelblue; color: white;
+    }
+</style>
+
+<div class="shs_search">
 
     <input class="mb-2" type="text" name="title_like" placeholder="title" style="width: 130px">
 
@@ -153,9 +165,7 @@ box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);">
 
     <input hidden name="limit" value="5">
 
-    <button style="display: block;
-        margin: 20px auto 10px auto;
-        background-color: steelblue; color: white;" class="btn" onclick="quetzal_shs_ajax()">
+    <button class="btn shs_button" onclick="quetzal_shs_ajax()">
         Search
     </button>
 </div>
@@ -174,15 +184,29 @@ box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);">
                         name, and so forth.
                     </p>
 
-                    <pre class="quetzal_shs_pre"><code class="language-html" id="quetzal_shs_codesample2"><div style="border: 1px solid lightgray; 
-margin-bottom: 40px; text-align:center; padding: 5px;
--webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5); 
-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);">
+                    <pre class="quetzal_shs_pre"><code class="language-html" id="quetzal_shs_codesample2"><style>
+    .shs_result {
+        border: 1px solid lightgray; 
+        margin-bottom: 40px; text-align:center; padding: 5px;
+        -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5); 
+        box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
+    }
 
-    <p><a href="" id="title" style="font-size:16px;
-    text-decoration: none;">Post title with link</a></p>
+    .shs_result #title {
+        font-size:16px;
+        text-decoration: none;
+    }
 
-    <p id="category__name" style="background-color: lightblue">Post categories list</p>
+    .shs_result #category__name {
+        background-color: lightblue;
+    }
+
+</style>
+<div class="shs_result">
+
+    <p><a href="" id="title">Post title with link</a></p>
+
+    <p id="category__name">Post categories list</p>
 
     <p id="tag__name" style="background-color: lightgreen">Post tags list</p>
 
