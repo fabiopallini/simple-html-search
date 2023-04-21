@@ -15,15 +15,14 @@ A search bar plugin that can be changed graphically writing HTML, for both the s
 you just need to write the HTML to customize it graphically.
 Same thing for the results, you specify what you need writing HTML, and how to display it.
 
+== Usage example ==
+a basic usage example is available on [github](https://github.com/fabiopallini/simple-html-search)
+
 == Frequently Asked Questions ==
 
 == May I receive direct support? ==
 
 Yes, you can contact me at fabiopallini01@gmail.com
-
-= What about writing CSS? =
-
-A separated box for writing CSS is planned to be developed, for now you can write CSS directly in the HTML tags using style="..."
 
 == Screenshots ==
 
@@ -32,9 +31,11 @@ A separated box for writing CSS is planned to be developed, for now you can writ
 
 == TODO ==
 * HTML tag <select> support
-* Separed CSS input box.
 
 == Changelog ==
 
 = 1.0 =
 * First version with base features
+
+= 1.0.1 =
+* Code editor syntax highlighting

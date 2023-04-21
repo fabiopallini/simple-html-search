@@ -119,10 +119,11 @@ class QuetzalShsApi {
         $a = [];
 
         foreach($posts as $p){
-            array_push($a, ["title" => get_the_title($p->ID),
+            array_push($a, ["title" => html_entity_decode(str_replace("& #8217","'", get_the_title($p->ID))),
                     "author_name" => get_the_author_meta( 'display_name', get_post_field('post_author', $p->ID) ),
                     "permalink" => get_the_permalink($p->ID),
-                    "body" => $p->post_content, 
+                    //"body" => $p->post_content, 
+                    "body" => wp_strip_all_tags($p->post_content), 
                     "excerpt" => $p->post_excerpt,
                     "thumbnail" => get_the_post_thumbnail_url($p->ID),
                     "category" => get_the_category($p->ID),

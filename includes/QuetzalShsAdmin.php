@@ -51,11 +51,9 @@ class QuetzalShsAdmin {
         wp_register_style("Quetzal_shs_style", plugin_dir_url($this->file) . "style.css");
         wp_enqueue_style("Quetzal_shs_style");
 
-        // highlight.js
-        wp_register_style('Quetzal_shs_highlightjs_css', plugin_dir_url($this->file) . 'lib/highlight-dark.min.css');
-        wp_enqueue_style('Quetzal_shs_highlightjs_css');
-        wp_register_script('Quetzal_shs_hightlight_js', plugin_dir_url($this->file) . 'lib/highlight.min.js');
-        wp_enqueue_script('Quetzal_shs_hightlight_js');
+        // ace c9
+        wp_register_script('shs_acec9', plugin_dir_url($this->file) . 'lib/acec9/ace.js');
+        wp_enqueue_script('shs_acec9');
 
         wp_register_script( 'Quetzal_shs_main_js' , plugin_dir_url($this->file) . 'main.js' );
         wp_localize_script( 'Quetzal_shs_main_js' , 'options' , array( 'rest_url' => get_rest_url(), "nonce" => wp_create_nonce('wp_rest') ) );
@@ -74,34 +72,27 @@ class QuetzalShsAdmin {
 
             <div class="row mt-5">
 
-                <div class="col-md-7 code">
-                    <div class="quetzal_shs_toolbar">
+            <p>A basic usage example is available on <a href="https://github.com/fabiopallini/simple-html-search" target="_blank">Github</a></p>
+
+                <div class="col-md-12 code">
+                    <div class="ace_editor" id="quetzal_shs_bar_1"><?php $this->read_html("quetzal_shs_bar_1") ?></div>
+                    <div class="quetzal_shs_toolbar mb-2">
                         <button class="btn btn-success" onclick="quetzal_shs_save_html('quetzal_shs_bar_1')">Save</button>
                         <span class="quetzal-shs-label-shortcode">shortcode [simple_html_search_bar]</span>
                     </div>
-                    <textarea placeholder="search bar code..." class="quetzal_shs_textarea" id="quetzal_shs_bar_1"><?php $this->read_html("quetzal_shs_bar_1") ?></textarea>
-                </div>
-
-                <div class="col-md-5">
-                    <p>Preview search bar</p>
                     <div id="preview_quetzal_shs_bar_1"><?php $this->read_html("quetzal_shs_bar_1") ?></div>
                 </div>
 
             </div>
 
-
             <div class="row mt-5">
 
-                <div class="col-md-7 code">
-                    <div class="quetzal_shs_toolbar">
+                <div class="col-md-12 code">                
+                    <div class="ace_editor" id="quetzal_shs_result_1"><?php $this->read_html("quetzal_shs_result_1") ?></div>
+                    <div class="quetzal_shs_toolbar mb-2">
                         <button class="btn btn-success" onclick="quetzal_shs_save_html('quetzal_shs_result_1')">Save</button>
                         <span class="quetzal-shs-label-shortcode">shortcode [simple_html_search_results]</span>
                     </div>
-                    <textarea placeholder="result code..." class="quetzal_shs_textarea" id="quetzal_shs_result_1"><?php $this->read_html("quetzal_shs_result_1") ?></textarea> 
-                </div>
-
-                <div class="col-md-5">
-                    <p>Preview single result object from search</p> 
                     <div id="preview_quetzal_shs_result_1"><?php $this->read_html("quetzal_shs_result_1") ?></div>
                 </div>
 
@@ -109,136 +100,32 @@ class QuetzalShsAdmin {
         
         </div>
 
-        <div class="container quetzal_shs_codesample">
-
-            <h5 class="mt-5">Code examples</h5>
-
-            <h6>Search bar sample</h6>
-            <div class="row">
-                <div class="col-md-10">
-                    <p>
-                        The search bar can be customized with multiple filters, potentially with any filter, 
-                        the code beside shows a basic example filtering by title, name="tile_like" means that the input doesn't need
-                        to be exact to the title value but just similar or containig some words.<br><br>
-                        The post_type is literally the post type, usually "post", or "page" etc, you may refer to "Post Type Parameters" on official
-                        Wordpress's documentation.<br>
-                        You may also need to filter by category or tag with name="tax_query_category" and name="tax_query_post_tag" as shown beside.
-                        <br><br>
-                        What is tax_query_category? or tax_query_post_tag?<br>
-                        tax_query rapresents the taxonomy keyword that Wordpress support as a filter, you can filter by any taxsonomy you need.
-                        <br><br>
-                        What does do meta_query_my_attribute_name?<br>
-                        meta_query is another keyword, you need that when you have a custom field you need to filter on, for instance you may have created a new custom 
-                        field with famous plugin ACF named my_attribute_name, that's when meta_query comes in.<br><br>
-
-                        name="limit" with value="5" sets the results to the first 5, any &lt;input&gt; may be hidden also.
-                    </p>
-
-                    <pre class="quetzal_shs_pre"><code class="language-html" id="quetzal_shs_codesample1"><style>
-    .shs_search {
-        border: 1px solid lightgray; 
-        border-radius: 5px; padding: 15px; 
-        -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5); 
-        box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
-    }
-    
-    .shs_button {
-        display: block;
-        margin: 20px auto 10px auto;
-        background-color: steelblue; color: white;
-    }
-</style>
-
-<div class="shs_search">
-
-    <input class="mb-2" type="text" name="title_like" placeholder="title" style="width: 130px">
-
-    <input class="mb-2" name="post_type" placeholder="post type" style="width:130px">
-
-    <input class="mb-2" name="author_name" placeholder="author" style="width:130px">
-
-    <input class="mb-2" type="text" name="tax_query_category" placeholder="category" style="width:130px">
-
-    <input class="mb-2" type="text" name="tax_query_post_tag" placeholder="tag" style="width:130px">
-
-    <input class="mb-2" type="text" name="meta_query_my_attribute_name" placeholder="my attribute" style="width:130px">
-
-    <input hidden name="limit" value="5">
-
-    <button class="btn shs_button" onclick="quetzal_shs_ajax()">
-        Search
-    </button>
-</div>
-</code></pre>
-                </div>
-            </div> <!-- row -->
-
-            <h6>Result sample</h6>
-
-            <div class="row">
-                <div class="col-md-10">
-                    <p>
-                        On the result side, any layout can be done with multiple &lt;div&gt; and custom styles.<br>
-                        You must specify what field you need to show as output, you can achive this through the "id" attribute.<br>
-                        For instance if you need to display the title or the author name, you have to define an "id" with the specified
-                        name, and so forth.
-                    </p>
-
-                    <pre class="quetzal_shs_pre"><code class="language-html" id="quetzal_shs_codesample2"><style>
-    .shs_result {
-        border: 1px solid lightgray; 
-        margin-bottom: 40px; text-align:center; padding: 5px;
-        -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5); 
-        box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
-    }
-
-    .shs_result #title {
-        font-size:16px;
-        text-decoration: none;
-    }
-
-    .shs_result #category__name {
-        background-color: lightblue;
-    }
-
-</style>
-<div class="shs_result">
-
-    <p><a href="" id="title">Post title with link</a></p>
-
-    <p id="category__name">Post categories list</p>
-
-    <p id="tag__name" style="background-color: lightgreen">Post tags list</p>
-
-    <p id="meta__my_attribute">the post's custom attribute</p>
-
-    <p id="body">the post's whole content</p>
-
-    <p id="excerpt" style="font-style: italic">the post's excerpt</p>
-
-    <label>Author:</label>
-    <p id="author_name">Author's name</p>
-
-    <img id="thumbnail" width=100 height=auto>
-
-    <!--<img id="thumbnail" src="placeholder_url.jpg" width=100 height=auto>-->
-
-</div>
-</code></pre>
-                </div>
-            </div><!-- row -->
-
-        </div> <!-- container -->
-
         <script>
-                quetzal_shs_admin_init();
+            acec9_init("quetzal_shs_bar_1");
+            acec9_init("quetzal_shs_result_1");
+
+            function acec9_init(name){
+                // convert all html tags <p> <div> etc in &alt;p &alt;div and </p> </div> in &alt;/p &atl;/div
+                let el = document.querySelector("#"+name);
+                if(el)
+                    el.innerHTML = el.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+                //quetzal_shs_enableTabKey("quetzal_shs_bar_1");
+                //quetzal_shs_enableTabKey("quetzal_shs_result_1");
+
+                var editor = ace.edit(name);
+                editor.setTheme("ace/theme/monokai");
+                editor.setShowPrintMargin(false);
+                //editor.session.setMode("ace/mode/javascript");
+                //editor.session.setMode("ace/mode/css");
+                editor.session.setMode("ace/mode/html");
+            }
         </script>
 
         <?php
     
         echo ob_get_clean();
     }
-
+    
     public function activation(){
         global $wpdb;
         // set the default character set and collation for the table

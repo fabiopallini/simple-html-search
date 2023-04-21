@@ -188,7 +188,10 @@ function quetzal_shs_recursiveFindChildren(elements, el){
 function quetzal_shs_save_html(name)
 {
 	let data = {"bar_name": name, "html_code": "", "nonce": options.nonce};
-	let html = document.getElementById(name).value;
+	//let html = document.getElementById(name).value;
+	//let textarea = document.getElementById(name).firstChild;
+	var editor = ace.edit(name);
+	let html = editor.getValue();
 	if(html == "")
 		return;
 	data['html_code'] = html;
@@ -219,46 +222,4 @@ function quetzal_shs_enableTabKey(id){
 			this.selectionEnd = start + 1;
 		}
 	  });
-}
-
-function quetzal_shs_admin_init(){
-	let el = document.querySelector("#quetzal_shs_codesample1");
-	if(el){
-		el.innerHTML = el.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-	}
-	let el2 = document.querySelector("#quetzal_shs_codesample2");
-	if(el2){
-		el2.innerHTML = el2.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-	}
-	hljs.highlightAll();
-	quetzal_shs_enableTabKey("quetzal_shs_bar_1");
-	quetzal_shs_enableTabKey("quetzal_shs_result_1");
-
-	const copyButtonLabel = "Copy Code";
-
-	let blocks = document.querySelectorAll("pre");	
-	blocks.forEach((block) => {
-	  if (navigator.clipboard) {
-		let button = document.createElement("button");
-	
-		button.innerText = copyButtonLabel;
-		block.appendChild(button);
-	
-		button.addEventListener("click", async () => {
-		  await quetzal_shs_copyCode(block, button);
-		});
-	  }
-	});
-}
-
-async function quetzal_shs_copyCode(block, button) {
-	const copyButtonLabel = "Copy Code";
-	let code = block.querySelector("code");
-	let text = code.innerText;
-
-	await navigator.clipboard.writeText(text);
-	button.innerText = "Code Copied";
-	setTimeout(() => {
-		button.innerText = copyButtonLabel;
-	}, 700);
 }
