@@ -85,13 +85,20 @@ display image with a placeholder if thumbnail doesn't exists
         border-radius: 5px; padding: 15px; 
         -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5); 
         box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
+        width: 400px;
     }
     
     .shs_button {
         display: block;
         margin: 20px auto 10px auto;
-        background-color: steelblue; color: white;
+        background-color: steelblue; 
+        color: white;
     }
+    
+    .shs_button:hover {
+        background-color: steelblue;
+    }
+    
 </style>
 
 <div class="shs_search">
@@ -106,7 +113,7 @@ display image with a placeholder if thumbnail doesn't exists
 
     <input class="mb-2" type="text" name="tax_query_post_tag" placeholder="tag" style="width:130px">
 
-    <input class="mb-2" type="text" name="meta_query_my_attribute_name" placeholder="my attribute" style="width:130px">
+    <input class="mb-2" type="text" name="meta_query_my_attribute" placeholder="my attribute" style="width:130px">
 
     <input name="limit" value="5" hidden="">
 
@@ -125,6 +132,7 @@ display image with a placeholder if thumbnail doesn't exists
         margin-bottom: 40px; text-align:center; padding: 5px;
         -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5); 
         box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
+        width: 400px;
     }
 
     .shs_result #title {
@@ -135,28 +143,32 @@ display image with a placeholder if thumbnail doesn't exists
     .shs_result #category__name {
         background-color: lightblue;
     }
+    
+    .shs_result img {
+        width: 100px;
+        height: auto;
+    }
+    
 </style>
 
 <div class="shs_result">
+
     <p><a href="" id="title">Post title with link</a></p>
 
     <p id="category__name">Post categories list</p>
 
     <p id="tag__name" style="background-color: lightgreen">Post tags list</p>
 
-    <p id="meta__my_attribute">the post's custom attribute</p>
+    <p id="meta__my_attribute">the post custom attribute</p>
 
-    <p id="body">the post's whole content</p>
+    <p id="body">the post body content</p>
 
-    <p id="excerpt" style="font-style: italic">the post's excerpt</p>
+    <p id="excerpt" style="font-style: italic">the post excerpt</p>
 
     <label>Author:</label>
     <p id="author_name">Author's name</p>
 
-    <img id="thumbnail" width="100" height="auto">
-
-    <img id="thumbnail" src="url/to/placeholder.jpg" width=100 height=auto>
-</div>
+    <img id="thumbnail" src="/path/to/placeholder.jpg">
 ```
 
 ![screenshot-1](https://user-images.githubusercontent.com/8449266/233747244-81f72035-d884-477a-a6b4-0f0460cf19b6.png)
