@@ -2,7 +2,7 @@
 Tags: search, custom layout, search bar, ajax search, search filter, custom fields search, shortcode
 Requires at least: 4.7
 Tested up to: 6.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -39,3 +39,6 @@ Yes, you can contact me at fabiopallini01@gmail.com
 
 = 1.0.2 =
 * Code editor syntax highlighting
+
+= 1.0.3 =
+* Missing library fix
