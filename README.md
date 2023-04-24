@@ -171,5 +171,8 @@ display image with a placeholder if thumbnail doesn't exists
     <img id="thumbnail" src="/path/to/placeholder.jpg">
 ```
 
-![screenshot-1](https://user-images.githubusercontent.com/8449266/233747244-81f72035-d884-477a-a6b4-0f0460cf19b6.png)
-![screenshot-2](https://user-images.githubusercontent.com/8449266/233747271-17e5632f-b011-4d97-90d0-7530f3a1d02e.png)
+![Screenshot from 2023-04-24 17-08-08](https://user-images.githubusercontent.com/8449266/234041609-40554055-6f4e-431f-af09-5bc89cc357b6.png)
+
+![Screenshot from 2023-04-24 17-11-22](https://user-images.githubusercontent.com/8449266/234041634-c58157b8-4fdb-4d11-9e0d-a7e4ca1d93bf.png)
+
+![Screenshot from 2023-04-24 17-10-35](https://user-images.githubusercontent.com/8449266/234041636-40b0bb64-ee69-4637-9d5b-7d8582a81db1.png)
