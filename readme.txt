@@ -30,7 +30,6 @@ Yes, you can contact me at fabiopallini01@gmail.com
 2. Code editor with result preview 
 
 == TODO ==
-* HTML tag <select> support
 
 == Changelog ==
 

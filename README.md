@@ -32,6 +32,25 @@ filter by custom field, "my_attribute_name" is the name of the attribute you wan
 
 sets the results to the first 5, any <input> may be hidden also. 
 
+```html
+    <select inflateWith="post_type__my_post_type" name="title_like"></select>
+```
+
+you may need also a select automatically filled with post_type or any custom value, just define it in **inflateWith** attribute,
+then in **name** attribute write the field you need to display, that value will be used as filter in the search.
+
+```html 
+    <select inflateWith="tax_query_category__category1" name="title_like"></select> 
+```
+
+in this example, all posts that have the category "category1" will be shown in the select, and used in the search using the title_like value
+
+```javascript  
+    <script>simple_html_search_select_event();</script> 
+```
+
+it's mandatory to call simple_html_search_select_event() function when we want to auto populate a select tag
+
 ### Search Result usage
 
 On the result side, any layout can be done with multiple html tags and custom styles.
@@ -115,14 +134,17 @@ display image with a placeholder if thumbnail doesn't exists
 
     <input class="mb-2" type="text" name="meta_query_my_attribute" placeholder="my attribute" style="width:130px">
 
+    <select inflateWith="post_type__my_post_type" name="title_like"></select>
+
     <input name="limit" value="5" hidden="">
 
     <button class="btn shs_button" onclick="quetzal_shs_ajax()">
         Search
     </button>
 </div>
-```
 
+<script>simple_html_search_select_event();</script>
+```
 > the result block
 
 ```html
@@ -169,6 +191,8 @@ display image with a placeholder if thumbnail doesn't exists
     <p id="author_name">Author's name</p>
 
     <img id="thumbnail" src="/path/to/placeholder.jpg">
+
+</div>
 ```
 
 ![Screenshot from 2023-04-24 17-08-08](https://user-images.githubusercontent.com/8449266/234041609-40554055-6f4e-431f-af09-5bc89cc357b6.png)

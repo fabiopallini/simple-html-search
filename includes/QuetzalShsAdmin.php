@@ -109,8 +109,6 @@ class QuetzalShsAdmin {
                 let el = document.querySelector("#"+name);
                 if(el)
                     el.innerHTML = el.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-                //quetzal_shs_enableTabKey("quetzal_shs_bar_1");
-                //quetzal_shs_enableTabKey("quetzal_shs_result_1");
 
                 var editor = ace.edit(name);
                 editor.setTheme("ace/theme/monokai");

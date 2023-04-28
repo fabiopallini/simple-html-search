@@ -206,20 +206,41 @@ function quetzal_shs_save_html(name)
 	xhr.send(JSON.stringify(data));
 }
 
-function quetzal_shs_enableTabKey(id){
-	document.getElementById(id).addEventListener('keydown', function(e) {
-		if (e.key == 'Tab') {
-		  e.preventDefault();
-		  var start = this.selectionStart;
-		  var end = this.selectionEnd;
-	  
-		  // set textarea value to: text before caret + tab + text after caret
-		  this.value = this.value.substring(0, start) +
-			"\t" + this.value.substring(end);
-	  
-		  // put caret at right position again
-		  this.selectionStart =
-			this.selectionEnd = start + 1;
+function quetzal_shs_select_inflate()
+{
+	// check if shs_search_bar has a <select> tag, then popolate the select
+	let el = document.querySelector("#quetzal_shs_search_bar");
+	if(el != null)
+	{
+		let select = document.getElementsByTagName("select");
+		if(select != null && select.length >= 1)
+		{
+			select = select[0];
+			let form = new FormData();
+			/*	- attribute inflateWith split example -
+				inflateWith == post_type__cartoon_character
+				inflate[0] -> post_type
+				inflate[1] -> cartoon_character
+			*/
+			let inflate = select.getAttribute("inflateWith").split("__");
+			form.append(inflate[0], inflate[1]);
+			if(form)
+			{
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', options.rest_url + "v1/quetzal_shs_endpoint", true);
+				xhr.onload = function (){
+					let json = JSON.parse(this.responseText);
+					for(var i = 0; i < json.length; i++)
+						select.innerHTML += '<option id="'+json[i].title+'">' + json[i].title + '</option>';
+				};
+				xhr.send(form);
+			}
 		}
-	  });
+	}
+}
+
+function simple_html_search_select_event(){
+	window.addEventListener('load', function () {
+		quetzal_shs_select_inflate();
+	});
 }
