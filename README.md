@@ -33,14 +33,14 @@ filter by custom field, "my_attribute_name" is the name of the attribute you wan
 sets the results to the first 5, any <input> may be hidden also. 
 
 ```html
-    <select inflateWith="post_type__my_post_type" name="title_like"></select>
+    <select inflatewith="post_type__my_post_type" name="title_like"></select>
 ```
 
 you may need also a select automatically filled with post_type or any custom value, just define it in **inflateWith** attribute,
 then in **name** attribute write the field you need to display, that value will be used as filter in the search.
 
 ```html 
-    <select inflateWith="tax_query_category__category1" name="title_like"></select> 
+    <select inflatewith="tax_query_category__category1" name="title_like"></select> 
 ```
 
 in this example, all posts that have the category "category1" will be shown in the select, and used in the search using the title_like value
@@ -49,7 +49,18 @@ in this example, all posts that have the category "category1" will be shown in t
     <script>simple_html_search_select_event();</script> 
 ```
 
-it's mandatory to call simple_html_search_select_event() function when we want to auto populate a select tag
+it's mandatory to call simple_html_search_select_event() function when we want to auto populate a select tag with inflatewith attribute
+
+as alternative, you can write your select manually:
+
+```html
+    <select name="meta_query_my_attribute">
+        <option id="test1">test1</option>
+        <option id="test2">test2</option>
+    </select>
+```
+
+filtering posts having "my_attribute" custom field with value test1 or test2, based on option selected
 
 ### Search Result usage
 
@@ -134,7 +145,14 @@ display image with a placeholder if thumbnail doesn't exists
 
     <input class="mb-2" type="text" name="meta_query_my_attribute" placeholder="my attribute" style="width:130px">
 
-    <select inflateWith="post_type__my_post_type" name="title_like"></select>
+    <select inflatewith="post_type__my_post_type" name="title_like"></select>
+
+    <!-- filtering posts having "my_attribute" custom field with value test1 or test2, based on option selected
+        <select name="meta_query_my_attribute">
+            <option id="test1">test1</option>
+            <option id="test2">test2</option>
+        </select>
+    -->
 
     <input name="limit" value="5" hidden="">
 
@@ -160,6 +178,7 @@ display image with a placeholder if thumbnail doesn't exists
     .shs_result #title {
         font-size:16px;
         text-decoration: none;
+        color: #00008B;
     }
 
     .shs_result #category__name {

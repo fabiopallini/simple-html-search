@@ -222,7 +222,7 @@ function quetzal_shs_select_inflate()
 				inflate[0] -> post_type
 				inflate[1] -> cartoon_character
 			*/
-			let inflate = select.getAttribute("inflateWith").split("__");
+			let inflate = select.getAttribute("inflatewith").split("__");
 			form.append(inflate[0], inflate[1]);
 			if(form)
 			{
