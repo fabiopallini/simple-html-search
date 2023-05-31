@@ -7,7 +7,8 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A search bar plugin that can be changed graphically writing HTML, for both the search bar and the results
+Customize your search bar directly via HTML, as well as for the results.
+A complete customizable search bar, infinite possibilities for your searches!
 
 == Description ==
 
